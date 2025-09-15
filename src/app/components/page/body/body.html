@@ -1,0 +1,128 @@
+<div class="alert alert-primary" role="alert">
+
+  <div class="d-flex justify-content-center align-items-center min-vh-100">
+    <div class="currency-exchange-container">
+      <div class="card border-0 shadow-sm">
+        <div class="card-body p-0">
+
+          <div class="card-header text-center bg-primary text-white p-3">
+            <h5 class="card-title mb-0">Calculadora de Cambio de Moneda</h5>
+            <small class="d-block mt-1 opacity-75" *ngIf="exchangeRates">
+              Actualizado: {{ getLastUpdated() }}
+              <button class="btn btn-sm btn-outline-light ms-2" (click)="refreshRates()">
+                <i class="fas fa-sync-alt"></i>
+              </button>
+            </small>
+          </div>
+
+          <div class="card-body">
+            <h5 class="card-title">Cotización USDT/USD</h5>
+            <div class="row align-items-start">
+              <div class="col">
+                <div class="row align-items-start">
+                  <div class="col">
+                    <p class="card-text">Tasa Binance</p>
+                  </div>
+                  <div class="col">
+                    <p class="card-text">{{ getCurrentUsdtRate() }}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="row align-items-start">
+                  <div class="col">
+                    <p class="card-text">USD/BOB</p>
+                  </div>
+                  <div class="col">
+                    <p class="card-text">{{ exchangeRates?.usdToBob !== undefined && exchangeRates?.usdToBob !== null ? exchangeRates?.usdToBob?.toFixed(2) : '6.96' }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Input USDT -->
+          <div class="currency-input-group position-relative">
+            <div class="row g-0">
+              <div class="col-8">
+                <div class="input-section p-3">
+                  <label class="currency-label">Tu recibes USDT</label>
+                  <div class="currency-value">
+                    <span class="currency-symbol">$</span>
+                    <input type="text"
+                      class="currency-input usdt-input"
+                      [value]="usdtDisplayValue"
+                      (input)="onUsdtInput($event)"
+                      (blur)="onUsdtBlur($event)"
+                      (focus)="onUsdtFocus($event)"
+                      (keypress)="onKeyPress($event)"
+                      (paste)="onPaste($event)"
+                      placeholder="0">
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-4">
+                <div class="currency-code-section d-flex align-items-center justify-content-center h-100 p-3">
+                  <span class="currency-code me-2">USDT</span>
+                  <img src="https://flagcdn.com/w20/us.png" alt="USDT" class="flag-icon">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Botón de intercambio -->
+          <div class="swap-button-container">
+            <button type="button" class="btn btn-primary swap-btn" (click)="swapCurrencies()"
+              aria-label="Intercambiar monedas">
+              <i class="fas fa-exchange-alt"></i>
+            </button>
+          </div>
+
+          <!-- Input Bolivianos -->
+          <div class="currency-input-group">
+            <div class="row g-0">
+              <div class="col-8">
+                <div class="input-section p-3">
+                  <label class="currency-label">Tu envías bolivianos</label>
+                  <div class="currency-value">
+                    <span class="currency-symbol">Bs.</span>
+                    <input type="text" class="currency-input bob-input"
+                      [value]="bobDisplayValue"
+                      (input)="onBobInput($event)"
+                      (blur)="onBobBlur($event)"
+                      (focus)="onBobFocus($event)"
+                      (keypress)="onKeyPress($event)"
+                      (paste)="onPaste($event)"
+                      placeholder="0">
+                  </div>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="currency-code-section d-flex align-items-center justify-content-center h-100 p-3">
+                  <span class="currency-code me-2">BOB</span>
+                  <img src="https://flagcdn.com/w20/bo.png" alt="BOB" class="flag-icon">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Información adicional -->
+          <div class="card-footer bg-light text-muted text-center p-3">
+            <small>
+              Tasas actualizadas automáticamente cada 30 segundos desde Binance
+            </small>
+            <!-- Debug info - remover en producción -->
+            <div class="mt-2 small text-muted">
+              <div>USDT: {{ usdtAmount }} | BOB: {{ bolivianoAmount }}</div>
+              <div>Tasa USDT/BOB: {{ exchangeRates ? exchangeRates.usdtToBob.toFixed(4) : 'N/A' }}</div>
+              <button class="btn btn-sm btn-outline-secondary mt-1" (click)="testConversion()">Test</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
