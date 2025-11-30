@@ -1,12 +1,13 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Navbar } from "./components/page/navbar/navbar";
-import { Body } from "./components/page/body/body";
 import { Foot } from "./components/page/foot/foot";
+import { ConverterComponent } from "./components/converter/converter";
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Navbar, Body, Foot],
+  imports: [RouterOutlet, Navbar, Foot, ConverterComponent,CommonModule],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

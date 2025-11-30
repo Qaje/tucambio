@@ -1,0 +1,12 @@
+{
+  "/bapi": {
+    "target": "https://p2p.binance.com",
+    "secure": true,
+    "changeOrigin": true,
+    "logLevel": "debug",
+    "headers": {
+      "Origin": "https://p2p.binance.com",
+      "Referer": "https://p2p.binance.com/"
+    }
+  }
+}

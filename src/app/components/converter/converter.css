@@ -1,0 +1,264 @@
+/* src/app/components/converter/converter.component.css */
+
+.converter-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Header */
+.header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  color: #1e293b;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.subtitle {
+  color: #64748b;
+  font-size: 1.1rem;
+}
+
+/* Rates Info */
+.rates-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.rate-card {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 15px;
+  border-radius: 12px;
+  text-align: center;
+  color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.rate-label {
+  display: block;
+  font-size: 0.85rem;
+  opacity: 0.9;
+  margin-bottom: 5px;
+}
+
+.rate-value {
+  display: block;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+/* Converter Box */
+.converter-box {
+  background: white;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+/* Currency Input */
+.currency-input {
+  margin-bottom: 20px;
+}
+
+.currency-input label {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  font-weight: 600;
+  color: #334155;
+}
+
+.currency-flag {
+  font-size: 1.5rem;
+  margin-right: 10px;
+}
+
+.currency-name {
+  font-size: 1rem;
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: #f8fafc;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 5px 15px;
+  transition: all 0.3s ease;
+}
+
+.input-wrapper:focus-within {
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.input-wrapper input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1e293b;
+  padding: 15px 10px;
+  outline: none;
+}
+
+.input-wrapper input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.currency-code {
+  font-weight: 700;
+  color: #64748b;
+  font-size: 1.1rem;
+  margin-left: 10px;
+}
+
+/* Swap Button */
+.swap-button-container {
+  display: flex;
+  justify-content: center;
+  margin: -10px 0;
+  position: relative;
+  z-index: 10;
+}
+
+.swap-button {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: 4px solid white;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.swap-button:hover:not(:disabled) {
+  transform: rotate(180deg) scale(1.1);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+.swap-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Action Buttons */
+.action-buttons {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.btn {
+  flex: 1;
+  padding: 15px 25px;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.btn-primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn-secondary {
+  background: #f1f5f9;
+  color: #475569;
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background: #e2e8f0;
+  transform: translateY(-2px);
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Last Update */
+.last-update {
+  text-align: center;
+  color: #64748b;
+  margin-bottom: 20px;
+}
+
+/* Info Box */
+.info-box {
+  background: #f8fafc;
+  border-left: 4px solid #667eea;
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 30px;
+}
+
+.info-box h3 {
+  color: #1e293b;
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 1.1rem;
+}
+
+.info-box ul {
+  margin: 0;
+  padding-left: 20px;
+  color: #475569;
+  line-height: 1.8;
+}
+
+.info-box li {
+  margin-bottom: 8px;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .converter-container {
+    padding: 15px;
+  }
+
+  .header h1 {
+    font-size: 2rem;
+  }
+
+  .converter-box {
+    padding: 20px;
+  }
+
+  .input-wrapper input {
+    font-size: 1.2rem;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+  }
+
+  .rates-info {
+    grid-template-columns: 1fr;
+  }
+}

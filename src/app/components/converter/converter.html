@@ -1,0 +1,119 @@
+<!-- src/app/components/converter/converter.component.html -->
+<div class="converter-container">
+  <!-- Header -->
+  <div class="header">
+    <h1>💱 Conversor BOB ↔ USDT</h1>
+    <p class="subtitle">Cambio en tiempo real con Binance</p>
+  </div>
+
+  <!-- Información de tasas P2P -->
+  <div class="rates-info">
+    <div class="rate-card buy">
+      <span class="rate-label">💰 Comprar USDT</span>
+      <span class="rate-value">{{ buyPrice | number:'1.2-2' }} BOB</span>
+      <small class="rate-description">Precio para comprar 1 USDT</small>
+    </div>
+    <div class="rate-card sell">
+      <span class="rate-label">💸 Vender USDT</span>
+      <span class="rate-value">{{ sellPrice | number:'1.2-2' }} BOB</span>
+      <small class="rate-description">Precio para vender 1 USDT</small>
+    </div>
+    <div class="rate-card avg">
+      <span class="rate-label">📊 Promedio</span>
+      <span class="rate-value">{{ avgPrice | number:'1.2-2' }} BOB</span>
+      <small class="rate-description">Precio promedio P2P</small>
+    </div>
+  </div>
+
+  <!-- Conversor -->
+  <div class="converter-box">
+    <!-- BOB Input -->
+    <div class="currency-input">
+      <label for="bob-input">
+        <span class="currency-flag">🇧🇴</span>
+        <span class="currency-name">Bolivianos (BOB)</span>
+      </label>
+      <div class="input-wrapper">
+        <input
+          id="bob-input"
+          type="number"
+          [(ngModel)]="amountBOB"
+          (ngModelChange)="onBOBChange()"
+          [disabled]="loading"
+          placeholder="0.00"
+          min="0"
+          step="0.01"
+        />
+        <span class="currency-code">BOB</span>
+      </div>
+    </div>
+
+    <!-- Botón de intercambio -->
+    <div class="swap-button-container">
+      <button
+        class="swap-button"
+        (click)="swapValues()"
+        [disabled]="loading"
+        title="Intercambiar valores"
+      >
+        ⇅
+      </button>
+    </div>
+
+    <!-- USDT Input -->
+    <div class="currency-input">
+      <label for="usdt-input">
+        <span class="currency-flag">₮</span>
+        <span class="currency-name">Tether (USDT)</span>
+      </label>
+      <div class="input-wrapper">
+        <input
+          id="usdt-input"
+          type="number"
+          [(ngModel)]="amountUSDT"
+          (ngModelChange)="onUSDTChange()"
+          [disabled]="loading"
+          placeholder="0.00"
+          min="0"
+          step="0.01"
+        />
+        <span class="currency-code">USDT</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Botones de acción -->
+  <div class="action-buttons">
+    <button
+      class="btn btn-secondary"
+      (click)="clearFields()"
+      [disabled]="loading"
+    >
+      🗑️ Limpiar
+    </button>
+    <button
+      class="btn btn-primary"
+      (click)="refreshRates()"
+      [disabled]="loading"
+    >
+      <span *ngIf="!loading">🔄 Actualizar Tasas</span>
+      <span *ngIf="loading">⏳ Cargando...</span>
+    </button>
+  </div>
+
+  <!-- Última actualización -->
+  <div class="last-update" *ngIf="lastUpdate">
+    <small>Última actualización: {{ lastUpdate | date:'short' }}</small>
+  </div>
+
+  <!-- Información adicional -->
+  <div class="info-box">
+    <h3>ℹ️ Información</h3>
+    <ul>
+      <li>Las tasas se actualizan automáticamente cada 30 segundos</li>
+      <li>Datos obtenidos en tiempo real desde Binance API</li>
+      <li>USDT es una criptomoneda estable vinculada al dólar (1 USDT ≈ 1 USD)</li>
+      <li>La tasa BOB/USD se actualiza diariamente</li>
+    </ul>
+  </div>
+</div>
